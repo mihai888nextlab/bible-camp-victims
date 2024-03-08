@@ -11,18 +11,20 @@ const mapId: string = "f2315f97bad87092";
 
 function MainApp() {
   return (
-    <div style={{ height: "98vh", width: "100%" }}>
-      <APIProvider apiKey={apiKey}>
-        <Map
-          defaultCenter={center}
-          defaultZoom={15}
-          mapId={mapId}
-          fullscreenControl={false}
-        >
-          <Directions />
-        </Map>
-      </APIProvider>
-    </div>
+    <>
+      <div style={{ height: "100vh", width: "100%", position: "fixed" }}>
+        <APIProvider apiKey={apiKey}>
+          <Map
+            defaultCenter={center}
+            defaultZoom={15}
+            mapId={mapId}
+            fullscreenControl={false}
+          >
+            <Directions />
+          </Map>
+        </APIProvider>
+      </div>
+    </>
   );
 }
 

@@ -16,11 +16,16 @@ function Directions() {
   const selected = routes[routeIndex];
   const leg = selected?.legs[0];
 
+  const [positionIndex, setpositionIndex] = useState(1);
+  const [position, setPosition] = useState(0);
+
   useEffect(() => {
     if (!routesLib || !map) return;
 
     setDirectionsService(new routesLib.DirectionsService());
     setDirectionsRenderer(new routesLib.DirectionsRenderer({ map }));
+
+    DirectionsRenderer?.setDirections(null);
   }, [routesLib, map]);
 
   useEffect(() => {
@@ -38,8 +43,6 @@ function Directions() {
     });
   }, [DirectionsService, DirectionsRenderer]);
 
-  console.log(routes);
-
   useEffect(() => {
     if (!DirectionsRenderer) return;
 
@@ -49,34 +52,160 @@ function Directions() {
 
   if (!leg) return null;
 
-  return (
-    <div className="directions">
-      <p>
-        {leg.start_address.split(",")[0]} to {leg.end_address.split(",")[0]}
-      </p>
-      <p>Distance: {leg.distance?.text}</p>
-      <p>Duration: {leg.duration?.text}</p>
+  console.log(routes);
 
-      <ul>
-        {routes.map((route, index) => (
-          <li key={index}>
+  return (
+    <>
+      <div className="directions" style={{ bottom: -position + "px" }}>
+        <div
+          className="bar"
+          onClick={() => {
+            if (positionIndex == 0) {
+              setpositionIndex(1);
+              if (routes.length % 2) {
+                setPosition((routes.length - 1) * 50 - 50);
+              } else {
+                setPosition(routes.length * 50 - 50);
+              }
+            } else if (positionIndex == 1) {
+              setpositionIndex(2);
+              setPosition(0 + 50);
+            } else {
+              setpositionIndex(0);
+              setPosition((routes.length - 1) * 100 - 50);
+            }
+          }}
+        ></div>
+        <ul>
+          <li>
             <button
+              className="routeButton"
               onClick={() => {
-                setRouteIndex(index);
-                console.log(index);
+                setRouteIndex(routeIndex);
+                setpositionIndex(0);
+                setPosition((routes.length - 1) * 100);
                 //DirectionsRenderer?.setDirections(null);
               }}
             >
-              {index}. {route.summary}{" "}
-              {route.fare?.value && " - " + route.fare?.value + " LEI"}
-              {route.legs[0].steps.map((stepObject, stepIndex) => (
-                <span> {stepObject.travel_mode} </span>
-              ))}
+              <div className="firstRow">
+                {routes[routeIndex].legs[0].steps.map(
+                  (stepObject, stepIndex) => (
+                    <span>
+                      {stepObject.travel_mode == "WALKING" ? (
+                        stepObject.duration?.value &&
+                        stepObject.duration.value > 120 && (
+                          <span className="step">
+                            <span className="walking">
+                              <img src={walkingIcon} />
+                              <p>{stepObject.duration?.text}</p>
+                            </span>
+                            <p className="arrow">{" > "}</p>
+                          </span>
+                        )
+                      ) : (
+                        <span className="step">
+                          <img src={busIcon} />
+                          <span
+                            className="busName"
+                            style={{
+                              backgroundColor: stepObject.transit?.line.color,
+                            }}
+                          >
+                            {stepObject.transit?.line.short_name}
+                          </span>
+                          <p className="arrow">{" > "}</p>
+                        </span>
+                      )}
+                    </span>
+                  )
+                )}
+              </div>
+              <div className="secondRow">
+                <p>
+                  {routes[routeIndex].legs[0].distance?.text} from{" "}
+                  {routes[routeIndex].legs[0].departure_time?.text} -{" "}
+                  {routes[routeIndex].legs[0].arrival_time?.text} (
+                  {routes[routeIndex].legs[0].duration?.text}){" "}
+                  {routes[routeIndex].fare &&
+                    " - " +
+                      routes[routeIndex].fare?.value +
+                      " " +
+                      routes[routeIndex].fare?.currency}
+                </p>
+              </div>
             </button>
           </li>
-        ))}
-      </ul>
-    </div>
+          {routes.map(
+            (route, index) =>
+              index != routeIndex && (
+                <li key={index}>
+                  <button
+                    className="routeButton"
+                    onClick={() => {
+                      setRouteIndex(index);
+                      console.log(route);
+
+                      setpositionIndex(0);
+                      setPosition((routes.length - 1) * 100);
+                      //DirectionsRenderer?.setDirections(null);
+                    }}
+                  >
+                    <div className="firstRow">
+                      {route.legs[0].steps.map((stepObject, stepIndex) => (
+                        <span>
+                          {stepObject.travel_mode == "WALKING" ? (
+                            stepObject.duration?.value &&
+                            stepObject.duration.value > 120 && (
+                              <span className="step">
+                                <span className="walking">
+                                  <img src={walkingIcon} />
+                                  <p>{stepObject.duration?.text}</p>
+                                </span>
+                                <p className="arrow">{" > "}</p>
+                              </span>
+                            )
+                          ) : (
+                            <span className="step">
+                              <img src={busIcon} />
+                              <span
+                                className="busName"
+                                style={{
+                                  backgroundColor:
+                                    stepObject.transit?.line.color,
+                                }}
+                              >
+                                {stepObject.transit?.line.short_name}
+                              </span>
+                              <p className="arrow">{" > "}</p>
+                            </span>
+                          )}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="secondRow">
+                      <p>
+                        {route.legs[0].distance?.text} from{" "}
+                        {route.legs[0].departure_time?.text} -{" "}
+                        {route.legs[0].arrival_time?.text} (
+                        {route.legs[0].duration?.text}){" "}
+                        {route.fare &&
+                          " - " + route.fare.value + " " + route.fare.currency}
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              )
+          )}
+        </ul>
+      </div>
+
+      <div className="startBar">
+        <button>Start</button>
+        <div className="time">
+          <p>{routes[routeIndex].legs[0].duration?.text}</p>
+        </div>
+      </div>
+    </>
   );
 }
 
