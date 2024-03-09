@@ -1,14 +1,23 @@
 import busIcon from "../assets/bus.png";
 import walkingIcon from "../assets/walking.png";
 import startIcon from "../assets/start.png";
+import alert from "../assets/alert.png";
 
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useState, useEffect } from "react";
+import Get from "./Get";
 
 interface Props {
   origin: string;
   destination: string;
   getRoute: (routeObj: google.maps.DirectionsRoute) => void;
+}
+
+interface GetProps {
+  type: number;
+  line: string | undefined;
+  details: number;
+  date: number;
 }
 
 function Directions(props: Props) {
@@ -25,6 +34,15 @@ function Directions(props: Props) {
 
   const [positionIndex, setpositionIndex] = useState(1);
   const [position, setPosition] = useState(0);
+
+  const [curentGet, setCurentGet] = useState<Promise<GetProps | undefined>>();
+  const [badBusses, setBadBusses] = useState([]);
+
+  useEffect(() => {
+    setCurentGet(Get());
+  }, [Get]);
+
+  curentGet?.then((res) => console.log(res?.line));
 
   useEffect(() => {
     if (!routesLib || !map) return;
@@ -95,35 +113,38 @@ function Directions(props: Props) {
               }}
             >
               <div className="firstRow">
-                {routes[routeIndex].legs[0].steps.map((stepObject) => (
-                  <span>
-                    {stepObject.travel_mode == "WALKING" ? (
-                      stepObject.duration?.value &&
-                      stepObject.duration.value > 120 && (
+                {routes[routeIndex].legs[0].steps.map(
+                  (stepObject, stepIndex) => (
+                    <span key={stepIndex + "bbb"}>
+                      {stepObject.travel_mode == "WALKING" ? (
+                        stepObject.duration?.value &&
+                        stepObject.duration.value > 120 && (
+                          <span className="step">
+                            <span className="walking">
+                              <img src={walkingIcon} />
+                              <p>{stepObject.duration?.text}</p>
+                            </span>
+                            <p className="arrow">{" > "}</p>
+                          </span>
+                        )
+                      ) : (
                         <span className="step">
-                          <span className="walking">
-                            <img src={walkingIcon} />
-                            <p>{stepObject.duration?.text}</p>
+                          <img src={busIcon} />
+
+                          <span
+                            className="busName"
+                            style={{
+                              backgroundColor: stepObject.transit?.line.color,
+                            }}
+                          >
+                            {stepObject.transit?.line.short_name}
                           </span>
                           <p className="arrow">{" > "}</p>
                         </span>
-                      )
-                    ) : (
-                      <span className="step">
-                        <img src={busIcon} />
-                        <span
-                          className="busName"
-                          style={{
-                            backgroundColor: stepObject.transit?.line.color,
-                          }}
-                        >
-                          {stepObject.transit?.line.short_name}
-                        </span>
-                        <p className="arrow">{" > "}</p>
-                      </span>
-                    )}
-                  </span>
-                ))}
+                      )}
+                    </span>
+                  )
+                )}
               </div>
               <div className="secondRow">
                 <p>
@@ -156,8 +177,8 @@ function Directions(props: Props) {
                     }}
                   >
                     <div className="firstRow">
-                      {route.legs[0].steps.map((stepObject) => (
-                        <span>
+                      {route.legs[0].steps.map((stepObject, stepIndex) => (
+                        <span key={stepIndex + "ccc"}>
                           {stepObject.travel_mode == "WALKING" ? (
                             stepObject.duration?.value &&
                             stepObject.duration.value > 120 && (
