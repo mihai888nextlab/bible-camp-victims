@@ -1,0 +1,167 @@
+@import url('https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.logo{
+    height: 200px;
+    width: 200px;
+}
+nav{
+    background-color: #1B1A55;
+    height: 75px;
+}
+body{
+    background-color: #9290C3;
+}
+.login{
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+.signup{
+    background-color: white;
+    border: solid white 2px;
+    border-radius: 3.5rem;
+    color: #1B1A55;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+section{
+    justify-content: space-between;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.nivea{
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-right: 75px;
+}
+.logo{
+    justify-content:flex-start;
+    width: 75px;
+    height: 75px;
+}
+.meniu{
+    height: 35px;
+}
+h2{
+    margin-top: 100px;
+    margin-left: 100px;
+    color:white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 75px;
+}
+.quot{
+    margin-left: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 35px;
+    color: white;
+    width: 400px;
+    height: 750px;
+}
+.box2{
+    display: flex;
+    gap:2px;
+}
+.box3{
+   gap: 2px;   
+   display: flex;
+}
+.poza{
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+    height:447px ;
+    width:753px;
+} 
+.alexandru{
+    border-radius:20px;
+    margin-left: 100px;
+    height: 600px;
+    width: 400px;
+}
+.prezentari{
+    display: flex;
+    gap: 6px;
+}
+.arrow-container {
+    display: flex;
+    align-items: center;
+ }
+ .left-arrow
+ {
+    width: 0;
+    height: 0;
+    margin: 5px;
+ }
+ .left-arrow
+ {
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+ }
+
+ .left-arrow {
+    border-right: 25px solid ;
+ }
+ .arrow-move {
+    position: relative;
+    animation: move 2s ease-in-out infinite;
+ }
+ @keyframes move {
+    0% {
+       transform: translateY(0);
+    }
+    50% {
+       transform: translateY(-10px);
+    }
+    100% {
+       transform: translateY(0);
+    }
+ }
+
+
+ .arrow-container {
+    display: flex;
+    align-items: center;
+ }
+ .right-arrow
+ {
+    width: 0;
+    height: 0;
+    margin: 5px;
+    color: blue;
+ }
+ .right-arrow
+ {
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+ }
+
+ .right-arrow {
+    border-left: 25px solid ;
+ }
+ .arrow-move {  
+    position: relative;
+    animation: move 2s ease-in-out infinite;
+ }
+ @keyframes move {
+    0% {
+       transform: translateY(0);
+    }
+    50% {
+       transform: translateY(-10px);
+    }
+    100% {
+       transform: translateY(0);
+    }
+ }
+ 

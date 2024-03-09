@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+div{
+    width: 300px;
+    background-color: white;
+    border: 3px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 200px auto;
+    text-align: center;
+    flex-direction: column;
+    border-radius: 15px;
+}
+button{
+    width: 70px;
+    height: 30px;
+    border-radius: 6px;
+    background-color: #070F2B;
+    color: white;
+}
+body{
+    background-color: #9290C3;
+}
