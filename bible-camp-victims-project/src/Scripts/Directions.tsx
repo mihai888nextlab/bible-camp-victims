@@ -35,14 +35,17 @@ function Directions(props: Props) {
   const [positionIndex, setpositionIndex] = useState(1);
   const [position, setPosition] = useState(0);
 
-  const [curentGet, setCurentGet] = useState<Promise<GetProps | undefined>>();
+  const [curentGet, setCurentGet] = useState<Promise<string | undefined>>();
   const [badBusses, setBadBusses] = useState([]);
 
   useEffect(() => {
     setCurentGet(Get());
   }, [Get]);
 
-  curentGet?.then((res) => console.log(res?.line));
+  curentGet?.then((res) => {
+    if (!res) return;
+    console.log(res);
+  });
 
   useEffect(() => {
     if (!routesLib || !map) return;
