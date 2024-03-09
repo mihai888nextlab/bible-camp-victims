@@ -5,7 +5,13 @@ import startIcon from "../assets/start.png";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useState, useEffect } from "react";
 
-function Directions() {
+interface Props {
+  origin: string;
+  destination: string;
+  getRoute: (routeObj: google.maps.DirectionsRoute) => void;
+}
+
+function Directions(props: Props) {
   const map = useMap();
   const routesLib = useMapsLibrary("routes");
   const [DirectionsService, setDirectionsService] =
@@ -33,8 +39,8 @@ function Directions() {
     if (!DirectionsService || !DirectionsRenderer) return;
 
     DirectionsService.route({
-      origin: "Str. Ghirlandei nr. 1, Timisoara, Romania",
-      destination: "Iulius Mall Timisoara",
+      origin: props.origin,
+      destination: props.destination,
       travelMode: google.maps.TravelMode.TRANSIT,
       provideRouteAlternatives: true,
     }).then((response) => {
@@ -89,37 +95,35 @@ function Directions() {
               }}
             >
               <div className="firstRow">
-                {routes[routeIndex].legs[0].steps.map(
-                  (stepObject, stepIndex) => (
-                    <span>
-                      {stepObject.travel_mode == "WALKING" ? (
-                        stepObject.duration?.value &&
-                        stepObject.duration.value > 120 && (
-                          <span className="step">
-                            <span className="walking">
-                              <img src={walkingIcon} />
-                              <p>{stepObject.duration?.text}</p>
-                            </span>
-                            <p className="arrow">{" > "}</p>
-                          </span>
-                        )
-                      ) : (
+                {routes[routeIndex].legs[0].steps.map((stepObject) => (
+                  <span>
+                    {stepObject.travel_mode == "WALKING" ? (
+                      stepObject.duration?.value &&
+                      stepObject.duration.value > 120 && (
                         <span className="step">
-                          <img src={busIcon} />
-                          <span
-                            className="busName"
-                            style={{
-                              backgroundColor: stepObject.transit?.line.color,
-                            }}
-                          >
-                            {stepObject.transit?.line.short_name}
+                          <span className="walking">
+                            <img src={walkingIcon} />
+                            <p>{stepObject.duration?.text}</p>
                           </span>
                           <p className="arrow">{" > "}</p>
                         </span>
-                      )}
-                    </span>
-                  )
-                )}
+                      )
+                    ) : (
+                      <span className="step">
+                        <img src={busIcon} />
+                        <span
+                          className="busName"
+                          style={{
+                            backgroundColor: stepObject.transit?.line.color,
+                          }}
+                        >
+                          {stepObject.transit?.line.short_name}
+                        </span>
+                        <p className="arrow">{" > "}</p>
+                      </span>
+                    )}
+                  </span>
+                ))}
               </div>
               <div className="secondRow">
                 <p>
@@ -152,7 +156,7 @@ function Directions() {
                     }}
                   >
                     <div className="firstRow">
-                      {route.legs[0].steps.map((stepObject, stepIndex) => (
+                      {route.legs[0].steps.map((stepObject) => (
                         <span>
                           {stepObject.travel_mode == "WALKING" ? (
                             stepObject.duration?.value &&
@@ -201,7 +205,11 @@ function Directions() {
       </div>
 
       <div className="startBar">
-        <button>
+        <button
+          onClick={() => {
+            props.getRoute(routes[routeIndex]);
+          }}
+        >
           Start
           <img src={startIcon} alt="" />
         </button>
