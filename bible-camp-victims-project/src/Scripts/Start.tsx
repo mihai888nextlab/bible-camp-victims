@@ -8,6 +8,10 @@ import busFull from "../assets/avoid-crowds.png";
 import sofer from "../assets/road.png";
 import Insert from "./Insert";
 
+import trafic1 from "../assets/trafic1.png";
+import trafic2 from "../assets/trafic2.png";
+import trafic3 from "../assets/trafic3.png";
+
 interface Props {
   curentRoute: google.maps.DirectionsRoute;
 }
@@ -140,7 +144,7 @@ function Start(props: Props) {
               setTrafficMenu(false);
             }}
           >
-            <img src={trafic} alt="" />
+            <img src={trafic1} alt="" />
             <p>Light</p>
           </button>
           <button
@@ -156,7 +160,7 @@ function Start(props: Props) {
               setTrafficMenu(false);
             }}
           >
-            <img src={trafic} alt="" />
+            <img src={trafic2} alt="" />
             <p>Moderate</p>
           </button>
           <button
@@ -172,7 +176,7 @@ function Start(props: Props) {
               setTrafficMenu(false);
             }}
           >
-            <img src={trafic} alt="" />
+            <img src={trafic3} alt="" />
             <p>Standstill</p>
           </button>
         </div>
