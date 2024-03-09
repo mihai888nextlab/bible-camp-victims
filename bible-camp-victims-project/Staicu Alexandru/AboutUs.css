@@ -60,3 +60,108 @@ h2{
     font-family: "Open Sans", sans-serif;
     font-size: 75px;
 }
+.quot{
+    margin-left: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 35px;
+    color: white;
+    width: 400px;
+    height: 750px;
+}
+.box2{
+    display: flex;
+    gap:2px;
+}
+.box3{
+   gap: 2px;   
+   display: flex;
+}
+.poza{
+    border-radius: 20px;
+    margin-top: 10px;
+    margin-left: 30px;
+    height:447px ;
+    width:753px;
+} 
+.alexandru{
+    border-radius:20px;
+    margin-left: 100px;
+    height: 600px;
+    width: 400px;
+}
+.prezentari{
+    display: flex;
+    gap: 6px;
+}
+.arrow-container {
+    display: flex;
+    align-items: center;
+ }
+ .left-arrow
+ {
+    width: 0;
+    height: 0;
+    margin: 5px;
+ }
+ .left-arrow
+ {
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+ }
+
+ .left-arrow {
+    border-right: 25px solid ;
+ }
+ .arrow-move {
+    position: relative;
+    animation: move 2s ease-in-out infinite;
+ }
+ @keyframes move {
+    0% {
+       transform: translateY(0);
+    }
+    50% {
+       transform: translateY(-10px);
+    }
+    100% {
+       transform: translateY(0);
+    }
+ }
+
+
+ .arrow-container {
+    display: flex;
+    align-items: center;
+ }
+ .right-arrow
+ {
+    width: 0;
+    height: 0;
+    margin: 5px;
+    color: blue;
+ }
+ .right-arrow
+ {
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent;
+ }
+
+ .right-arrow {
+    border-left: 25px solid ;
+ }
+ .arrow-move {  
+    position: relative;
+    animation: move 2s ease-in-out infinite;
+ }
+ @keyframes move {
+    0% {
+       transform: translateY(0);
+    }
+    50% {
+       transform: translateY(-10px);
+    }
+    100% {
+       transform: translateY(0);
+    }
+ }
+ 
