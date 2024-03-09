@@ -1,18 +1,21 @@
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 *{
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
     list-style: none;
     text-decoration: none;
 }
 .logo{
-    height: 75px;
-    width: 75px;
+    height: 200px;
+    width: 200px;
 }
 nav{
     background-color: #1B1A55;
     height: 75px;
+}
+body{
+    background-color: #9290C3;
 }
 .login{
     color: white;
@@ -23,18 +26,29 @@ nav{
 .signup{
     background-color: white;
     border: solid white 2px;
-    border-radius: 2rem;
+    border-radius: 3.5rem;
     color: #1B1A55;
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
     font-size: 30px;
 }
 ul{  
-    display: flex;
-    justify-content:flex-end;
+    justify-content: space-around;
     justify-content: space-between;
-    gap: 5px;
+    display: flex;
+    text-align: center;
+    align-items: center;
 }
 .logo{
     justify-content:flex-start;
+    width: 75px;
+    height: 75px;
 }
+.meniu{
+    height: 35px;
+}
+footer{
+    background-color: black;
+}
+
+
