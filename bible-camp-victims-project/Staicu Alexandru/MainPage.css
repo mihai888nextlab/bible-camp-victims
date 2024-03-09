@@ -26,7 +26,7 @@ body{
 .signup{
     background-color: white;
     border: solid white 2px;
-    border-radius: 2rem;
+    border-radius: 3.5rem;
     color: #1B1A55;
     font-family: "Open Sans", sans-serif;
     font-weight: 700;
@@ -37,6 +37,7 @@ ul{
     justify-content: space-between;
     display: flex;
     text-align: center;
+    align-items: center;
 }
 .logo{
     justify-content:flex-start;
@@ -44,7 +45,10 @@ ul{
     height: 75px;
 }
 .meniu{
-    height: 50px;
+    height: 35px;
+}
+footer{
+    background-color: black;
 }
 
 
