@@ -53,56 +53,10 @@ section{
 .meniu{
     height: 35px;
 }
-footer{
-    background-color: black;
-}
 h2{
     margin-top: 100px;
     margin-left: 100px;
     color:white;
     font-family: "Open Sans", sans-serif;
     font-size: 75px;
-}
-.quot{
-    margin-top: 30px;
-    margin-left: 100px;
-    color: white;
-    font-size: 40px;
-    font-family: "Old Standard TT", serif;
-}
-.box3{
-    margin-top: 30px;
-    margin-left: 100px;
-}
-input{
-    height: 40px;
-    width: 600px;
-}
-button{
-    border-radius: 5px;
-    height: 40px;
-    width: 150px;
-}
-.box4{
-    justify-content: center;
-    display: flex;
-    gap: 265px;
-}
-.toqu{
-    margin-top: 20px;
-    margin-left: 100px;
-    color: white;
-    font-family: "Old Standard TT", serif;
-    font-size: 20px;
-}
-.box5{
-    justify-content: center;
-    display: flex;
-}
-h3{
-    margin-top: 100px;
-    margin-left: 360px;
-    color:white;
-    font-family: "Open Sans", sans-serif;
-    font-size: 30px;
 }
