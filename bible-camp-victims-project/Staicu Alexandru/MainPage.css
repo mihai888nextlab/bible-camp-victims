@@ -16,7 +16,7 @@ nav{
     height: 75px;
 }
 body{
-    background-color: #9290C3;
+    background-image: linear-gradient(to bottom, #9290C3, #070F2B, black );
 }
 .login{
     color: white;
@@ -204,4 +204,20 @@ h3{
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+footer{
+  background-color: black;
+}
+p{
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+h4{
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+}
+.jos{
+  justify-content: space-between;
+  display: flex;
 }
