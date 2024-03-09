@@ -1,5 +1,6 @@
 import busIcon from "../assets/bus.png";
 import walkingIcon from "../assets/walking.png";
+import startIcon from "../assets/start.png";
 
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import { useState, useEffect } from "react";
@@ -83,7 +84,7 @@ function Directions() {
               onClick={() => {
                 setRouteIndex(routeIndex);
                 setpositionIndex(0);
-                setPosition((routes.length - 1) * 100);
+                setPosition((routes.length - 1) * 100 - 50);
                 //DirectionsRenderer?.setDirections(null);
               }}
             >
@@ -146,7 +147,7 @@ function Directions() {
                       console.log(route);
 
                       setpositionIndex(0);
-                      setPosition((routes.length - 1) * 100);
+                      setPosition((routes.length - 1) * 100 - 50);
                       //DirectionsRenderer?.setDirections(null);
                     }}
                   >
@@ -200,7 +201,10 @@ function Directions() {
       </div>
 
       <div className="startBar">
-        <button>Start</button>
+        <button>
+          Start
+          <img src={startIcon} alt="" />
+        </button>
         <div className="time">
           <p>{routes[routeIndex].legs[0].duration?.text}</p>
         </div>
