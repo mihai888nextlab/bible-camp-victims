@@ -5,6 +5,7 @@ import Home from "./Pages/Home";
 import { useState } from "react";
 import AboutUs from "./Pages/AboutUs";
 import Login from "./Pages/Login";
+import Signup from "./Pages/Signup";
 
 function App() {
   const [origin, setOrigin] = useState("");
@@ -33,6 +34,7 @@ function App() {
           ></Route>
           <Route path="about-us" element={<AboutUs />}></Route>
           <Route path="login" element={<Login></Login>}></Route>
+          <Route path="signup" element={<Signup />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

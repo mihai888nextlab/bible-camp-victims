@@ -5,14 +5,14 @@ interface Props {
     password: string;
 }
 
-function Login(props: Props): AxiosResponse {
-    let data;
-
-    axios.get("/bibleCamp/users.php?username=" + props.username + "&password=" + props.password).then((res) => {
-        data = res.data;
-    });
-
-    return data;
+const login = async (props: Props) => {
+    try {
+        const response: AxiosResponse = await axios.get("/bibleCamp/users.php?username=" + props.username + "&password=" + props.password);
+        const responseData = response.data;
+        
+        return responseData;
+    } catch (error) {
+    }
 }
 
-export default Login;
+export default login;

@@ -1,3 +1,4 @@
+import Footer from "../Components/Footer";
 import Header from "../Components/Header";
 import Hero from "../Components/Hero";
 
@@ -11,6 +12,7 @@ function Home(props: Props) {
     <>
       <Header></Header>
       <Hero origin={props.origin} destination={props.destination}></Hero>
+      <Footer></Footer>
     </>
   );
 }

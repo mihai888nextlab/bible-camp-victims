@@ -17,7 +17,7 @@ function Header() {
               <Link to={"login"}>Log In</Link>
             </button>
             <button className="signup">
-              <Link to={"signin"}>Sign Up</Link>
+              <Link to={"signup"}>Sign Up</Link>
             </button>
             <img
               src={menu}

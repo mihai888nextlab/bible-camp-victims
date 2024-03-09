@@ -36,11 +36,11 @@ function Directions(props: Props) {
   const [position, setPosition] = useState(0);
 
   const [curentGet, setCurentGet] = useState<Promise<string | undefined>>();
-  const [badBusses, setBadBusses] = useState([]);
+  //const [badBusses, setBadBusses] = useState([]);
 
-  useEffect(() => {
-    setCurentGet(Get());
-  }, [Get]);
+  //useEffect(() => {
+  //  setCurentGet(Get());
+  //}, [Get]);
 
   curentGet?.then((res) => {
     if (!res) return;

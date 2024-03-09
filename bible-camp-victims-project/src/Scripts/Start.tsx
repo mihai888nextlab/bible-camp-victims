@@ -12,6 +12,10 @@ import trafic1 from "../assets/trafic1.png";
 import trafic2 from "../assets/trafic2.png";
 import trafic3 from "../assets/trafic3.png";
 
+import orar from "../assets/orar.png";
+import cheie from "../assets/cheie.png";
+import clock from "../assets/ceas.png";
+
 interface Props {
   curentRoute: google.maps.DirectionsRoute;
 }
@@ -124,6 +128,18 @@ function Start(props: Props) {
           <button>
             <img src={sofer} alt="" />
             <p>Soferul neglijent</p>
+          </button>
+          <button>
+            <img src={cheie} alt="" />
+            <p>In repairment</p>
+          </button>
+          <button>
+            <img src={clock} alt="" />
+            <p>Comes late</p>
+          </button>
+          <button>
+            <img src={orar} alt="" />
+            <p>Out of schedule</p>
           </button>
         </div>
       )}

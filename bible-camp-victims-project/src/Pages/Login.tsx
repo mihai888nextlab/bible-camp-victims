@@ -1,8 +1,6 @@
 import { useState } from "react";
 import Header from "../Components/Header";
-import LoginFct from "../Scripts/Login";
-import { Navigate } from "react-router-dom";
-import { Axios } from "axios";
+import login from "../Scripts/Login";
 
 function Login() {
   const [username, setUsername] = useState("");
@@ -10,23 +8,15 @@ function Login() {
 
   const [loginData, setLoginData] = useState("");
 
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setLoginData(LoginFct({ username, password }));
-
-    console.log(username);
-
-    if (!loginData) {
-      alert("Invalid username or password");
-    } else {
-      return <Navigate replace to={"/about-us"} />;
-    }
+    setLoginData(await login({ username, password }));
   };
   return (
     <>
       <Header></Header>
       <div className="loginPage">
-        <h1>Welcome back!</h1>
+        <h1>Welcome back! {loginData}</h1>
         <h2>Log In</h2>
         <form onSubmit={handleSubmit}>
           <input
