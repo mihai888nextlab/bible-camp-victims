@@ -1,3 +1,224 @@
+   @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
+/*
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+.logo{
+    height: 200px;
+    width: 200px;
+}
+nav{
+    background-color: #1B1A55;
+    height: 75px;
+}
+body{
+    background-image: linear-gradient(to bottom, #9290C3, #070F2B, black );
+}
+.login{
+    color: white;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+.signup{
+    background-color: white;
+    border: solid white 2px;
+    border-radius: 3.5rem;
+    color: #1B1A55;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    font-size: 30px;
+}
+section{
+    justify-content: space-between;
+    display: flex;
+    text-align: center;
+    align-items: center;
+}
+.nivea{
+    display: flex;
+    justify-content: space-between;
+    gap: 100px;
+    margin-right: 75px;
+}
+.logo{
+    justify-content:flex-start;
+    width: 75px;
+    height: 75px;
+}
+.meniu{
+    height: 35px;
+}
+footer{
+    background-color: black;
+}
+h2{
+  position: relative;
+  right: 60px;
+    margin-right: 100px;
+     margin-top: 100px;
+     color:white;
+  font-family: "Open Sans", sans-serif;
+ font-size: 75px;
+}
+.quot{
+    color: white;
+    font-size: 40px;
+    font-family: "Old Standard TT", serif;
+}
+.box1{
+    display: flex;
+    justify-content: space-around;
+}
+.box2{
+    margin-top: 100px;
+    position: relative;
+    top: 30PX;
+    right: 150px;
+}
+.box3{
+    margin-top: 30px;
+    margin-left: 100px;
+}
+input{
+    border: 3px solid black;
+    height: 40px;
+    width: 600px;
+}
+button{
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 40px;
+    width: 150px;
+}
+.box4{
+    justify-content: center;
+    display: flex;
+    gap: 265px;
+}
+.toqu{
+    margin-top: 20px;
+    margin-left: 100px;
+    color: white;
+    font-family: "Old Standard TT", serif;
+    font-size: 20px;
+}
+.box5{
+    justify-content: center;
+    display: flex;
+}
+h3{
+    margin-top: 100px;
+    margin-left: 360px;
+    color:white;
+    font-family: "Open Sans", sans-serif;
+    font-size: 30px;
+}
+* {box-sizing:border-box}
+
+
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+.mySlides {
+  display: none;
+}
+
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}   --!>
+
+
+.numbertext {
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  position: absolute;
+  top: 0;
+}
+
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #717171;
+}
+
+.fade {
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+footer{
+  background-color: black;
+}
+p{
+  color: white;
+  font-family: "Open Sans", sans-serif;
+}
+h4{
+  color: white;
+  font-family: "Open Sans", sans-serif;
+  font-size: 30px;
+}
+.jos{
+  justify-content: space-between;
+  display: flex;
+} */
+
 @import url('https://fonts.googleapis.com/css2?family=Caveat&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Old+Standard+TT:ital,wght@0,400;0,700;1,400&display=swap');
 *{
@@ -218,6 +439,6 @@ h4{
   font-size: 30px;
 }
 .jos{
-  justify-content: space-between;
   display: flex;
-}                                                            
+  justify-content: space-around;
+}
