@@ -14,9 +14,19 @@ interface Props {
 
 function Start(props: Props) {
   const [menu, setMenu] = useState(false);
+  const [curentLine, setCurentLine] = useState(0);
+  const [trafficMenu, setTrafficMenu] = useState(false);
 
   let route = props.curentRoute;
   console.log(route);
+
+  let lines: (string | undefined)[] = [];
+
+  for (let i = 0; i < route.legs[0].steps.length; i++) {
+    if (route.legs[0].steps[i].transit) {
+      lines.push(route.legs[0].steps[i].transit?.line.short_name);
+    }
+  }
 
   return (
     <>
@@ -65,37 +75,39 @@ function Start(props: Props) {
           </div>
         </button>
       </div>
-      <div
-        className="reportButton"
-        onClick={() => {
-          setMenu(!menu);
-        }}
-      >
-        <img src={alert} alt="alert" />
+      <div className="reportButton">
+        <div className="btns">
+          {lines.map((line, index) => (
+            <button
+              key={index}
+              onClick={() => {
+                setCurentLine(index);
+              }}
+              style={{
+                backgroundColor: curentLine == index ? "#1B1A55" : "white",
+                color: curentLine == index ? "white" : "#1B1A55",
+              }}
+            >
+              {line}
+            </button>
+          ))}
+        </div>
+
+        <img
+          src={alert}
+          alt="alert"
+          onClick={() => {
+            setMenu(!menu);
+          }}
+        />
       </div>
 
       {menu && (
         <div className="menu">
           <button
             onClick={() => {
-              let now = new Date();
-              console.log(now.valueOf());
-              let lines = [];
-
-              for (let i = 0; i < route.legs[0].steps.length; i++) {
-                if (route.legs[0].steps[i].transit) {
-                  lines.push(route.legs[0].steps[i].transit?.line.short_name);
-                }
-              }
-
-              for (let i = 0; i < lines.length; i++) {
-                Insert({
-                  type: 0,
-                  date: now.valueOf(),
-                  line: lines[i],
-                  details: 0,
-                });
-              }
+              setTrafficMenu(!trafficMenu);
+              setMenu(false);
             }}
           >
             <img src={trafic} alt="" />
@@ -108,6 +120,60 @@ function Start(props: Props) {
           <button>
             <img src={sofer} alt="" />
             <p>Soferul neglijent</p>
+          </button>
+        </div>
+      )}
+
+      {trafficMenu && (
+        <div className="menu">
+          <button
+            onClick={() => {
+              let now = new Date();
+
+              Insert({
+                type: 0,
+                date: now.valueOf(),
+                line: lines[curentLine],
+                details: 0,
+              });
+
+              setTrafficMenu(false);
+            }}
+          >
+            <img src={trafic} alt="" />
+            <p>Light</p>
+          </button>
+          <button
+            onClick={() => {
+              let now = new Date();
+
+              Insert({
+                type: 0,
+                date: now.valueOf(),
+                line: lines[curentLine],
+                details: 1,
+              });
+              setTrafficMenu(false);
+            }}
+          >
+            <img src={trafic} alt="" />
+            <p>Moderate</p>
+          </button>
+          <button
+            onClick={() => {
+              let now = new Date();
+
+              Insert({
+                type: 0,
+                date: now.valueOf(),
+                line: lines[curentLine],
+                details: 2,
+              });
+              setTrafficMenu(false);
+            }}
+          >
+            <img src={trafic} alt="" />
+            <p>Standstill</p>
           </button>
         </div>
       )}

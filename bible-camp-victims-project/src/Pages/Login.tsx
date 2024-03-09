@@ -1,13 +1,26 @@
 import { useState } from "react";
 import Header from "../Components/Header";
+import LoginFct from "../Scripts/Login";
+import { Navigate } from "react-router-dom";
+import { Axios } from "axios";
 
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
+  const [loginData, setLoginData] = useState("");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    console.log(username, password);
+    setLoginData(LoginFct({ username, password }));
+
+    console.log(username);
+
+    if (!loginData) {
+      alert("Invalid username or password");
+    } else {
+      return <Navigate replace to={"/about-us"} />;
+    }
   };
   return (
     <>
@@ -30,7 +43,9 @@ function Login() {
             onChange={(e) => setPassword(e.target.value)}
           />
           <br />
-          <button className="login-btn">Log In</button>
+          <button className="login-btn" type="submit">
+            Log In
+          </button>
         </form>
       </div>
     </>
