@@ -164,4 +164,34 @@ h2{
        transform: translateY(0);
     }
  }
- 
+ .features{
+   height: 100px;
+   width: 700px;
+
+ }
+ .offer{
+   margin-left: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 25px;
+    color: white;
+    width: 700px;
+ }
+ .wath{
+   margin-left: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 40px;
+    color: white;
+    width: 300px;
+
+ }
+ .features{
+   display: flex;
+   gap :20px;
+ }
+ .textu{
+
+ }
+ .images{
+   gap: 5px;
+   margin-top: 10px;
+ }
