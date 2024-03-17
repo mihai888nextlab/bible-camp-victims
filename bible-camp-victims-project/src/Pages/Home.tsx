@@ -12,7 +12,6 @@ function Home(props: Props) {
     <>
       <Header></Header>
       <Hero origin={props.origin} destination={props.destination}></Hero>
-      <Footer></Footer>
     </>
   );
 }
